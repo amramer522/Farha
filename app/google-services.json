@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "993447725732",
+    "firebase_url": "https://farha-d76ce.firebaseio.com",
+    "project_id": "farha-d76ce",
+    "storage_bucket": "farha-d76ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993447725732:android:f35287697470078e",
+        "android_client_info": {
+          "package_name": "com.farhachat.farha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993447725732-vj71vt74bujjsgge9jq0b80ltvpvjlkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farhachat.farha",
+            "certificate_hash": "90a74c82a9e6a68ad4cfae9e7ffaefb08518dd26"
+          }
+        },
+        {
+          "client_id": "993447725732-hapg0gcmdkmha38cme9pas9qen26d6ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjyiO-QK_ClMVA_0mBMBxVxi_YOxOG9kQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993447725732-hapg0gcmdkmha38cme9pas9qen26d6ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
