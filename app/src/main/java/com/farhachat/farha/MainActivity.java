@@ -20,11 +20,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import Fragment.ChatFragment;
-import Fragment.UsersFragment;
-import adapter.ViewPagerAdapter;
+import com.farhachat.farha.Fragment.ChatFragment;
+import com.farhachat.farha.Fragment.ProfileFragment;
+import com.farhachat.farha.Fragment.UsersFragment;
+import com.farhachat.farha.adapter.ViewPagerAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
-import model.User;
+import com.farhachat.farha.model.User;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
             {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getUsername());
-                if (user.getImageURl().equals("default"))
+                if (user.getImageURL().equals("default"))
                 {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 }
                 else
                 {
-                    Glide.with(MainActivity.this).load(user.getImageURl()).into(profile_image);
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
             }
 
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerAdapter.addFragment(new ChatFragment(),"Chats");
         viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+        viewPagerAdapter.addFragment(new ProfileFragment(),"Profile");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -100,14 +104,32 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.signOut:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                finish();
-                break;
-            case R.id.profile:
-                Toast.makeText(this, "soon", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return true;
+    }
+
+    private void status(String status)
+    {
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 
 }

@@ -42,6 +42,14 @@ dependencies {
     //import liberary
     //noinspection GradleCompatible
     implementation 'com.android.support:design:27.1.1'
+
+    //add Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // ButterKnife dependency
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
